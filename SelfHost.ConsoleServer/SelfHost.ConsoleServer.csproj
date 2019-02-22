@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
     <Compile Include="Program.cs" />

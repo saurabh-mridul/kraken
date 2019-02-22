@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
 using System;
+using System.Threading.Tasks;
 
 namespace SelfHost.ConsoleClient
 {
@@ -14,18 +15,33 @@ namespace SelfHost.ConsoleClient
 
         static void RunSignalR()
         {
-            string url = "http://localhost:9000";
+            string url = "http://localhost:9998/signalR";
             HubConnection connection = new HubConnection(url);
             var proxy = connection.CreateHubProxy("notificationHub");
-
+            var chatProxy = connection.CreateHubProxy("chatHub");
             try
             {
                 connection.Start().Wait();
-                proxy.On<string>("displayTime", time =>
-                 {
-                     Console.WriteLine($"from server Time: {time}");
-                 });
-                proxy.Invoke("ServerTime");
+                //proxy.On<string>("displayTime", time =>
+                // {
+                //     Console.WriteLine($"from server Time: {time}");
+                // });
+                //proxy.Invoke("ServerTime");
+
+                //chatProxy.On<string>("addMessage", m => Console.WriteLine(m));
+                chatProxy.Invoke("Send", "Hello World", "mak", connection.ConnectionId).ContinueWith(task =>
+                {
+                    if (task.IsFaulted)
+                    {
+                        Console.WriteLine("There was an error opening the connection:{0}",
+                                          task.Exception.GetBaseException());
+                    }
+                    else
+                    {
+                        Console.WriteLine("call completed.");
+                    }
+
+                });
             }
             catch (Exception ex)
             {

@@ -19,7 +19,7 @@ namespace SelfHost.ConsoleServer
             app.UseCors(CorsOptions.AllowAll);
             app.Map("/signalr", map =>
             {
-                HubConfiguration hcf = new HubConfiguration();
+                HubConfiguration hcf = new HubConfiguration { EnableJSONP = true };
                 map.RunSignalR(hcf);
             });
 
