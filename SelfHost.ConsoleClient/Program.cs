@@ -15,7 +15,7 @@ namespace SelfHost.ConsoleClient
 
         static void RunSignalR()
         {
-            string url = "http://localhost:9998/signalR";
+            string url = "http://localhost:9000";
             HubConnection connection = new HubConnection(url);
             var proxy = connection.CreateHubProxy("notificationHub");
             var chatProxy = connection.CreateHubProxy("chatHub");

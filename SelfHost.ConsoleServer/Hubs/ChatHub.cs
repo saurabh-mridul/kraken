@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using System;
+using System.Threading.Tasks;
 
 namespace SelfHost.ConsoleServer.Hubs
 {
@@ -10,7 +12,7 @@ namespace SelfHost.ConsoleServer.Hubs
         {
             Clients.Caller.addMessage(userName, message);
             Clients.Client(connectionId).addMessage(userName, message);
-            System.Console.WriteLine($"recieved message: {message} from {userName}");
+            Console.WriteLine($"recieved message: {message} from {userName}");
         }
 
         public void SendToGroup(string message, string userName, string groupName)
@@ -26,6 +28,24 @@ namespace SelfHost.ConsoleServer.Hubs
         public void JoinGroup(string groupName)
         {
             Groups.Add(Context.ConnectionId, groupName);
+        }
+
+        public override Task OnConnected()
+        {
+            Console.WriteLine("Hub OnConnected {0}\n", Context.ConnectionId);
+            return (base.OnConnected());
+        }
+
+        public override Task OnDisconnected(bool stopCalled)
+        {
+            Console.WriteLine("Hub OnDisconnected {0}\n", Context.ConnectionId);
+            return (base.OnDisconnected(stopCalled));
+        }
+
+        public override Task OnReconnected()
+        {
+            Console.WriteLine("Hub OnReconnected {0}\n", Context.ConnectionId);
+            return (base.OnReconnected());
         }
     }
 }

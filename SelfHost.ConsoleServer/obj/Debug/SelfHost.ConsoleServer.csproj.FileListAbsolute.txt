@@ -23,9 +23,9 @@ D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\bin\Debug\Newto
 D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\bin\Debug\System.Net.Http.Formatting.xml
 D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\bin\Debug\System.Web.Http.xml
 D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\bin\Debug\System.Web.Http.Owin.xml
-D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\obj\Debug\SelfHost.ConsoleServer.csprojResolveAssemblyReference.cache
 D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\obj\Debug\SelfHost.ConsoleServer.exe
 D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\obj\Debug\SelfHost.ConsoleServer.pdb
 D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\bin\Debug\Microsoft.Owin.Cors.dll
 D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\bin\Debug\System.Web.Cors.dll
 D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\bin\Debug\Microsoft.Owin.Cors.xml
+D:\courses\SelfHost Web Server And Client\SelfHost.ConsoleServer\obj\Debug\SelfHost.ConsoleServer.csprojResolveAssemblyReference.cache
