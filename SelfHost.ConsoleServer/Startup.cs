@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Owin;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace SelfHost.ConsoleServer
@@ -13,9 +16,16 @@ namespace SelfHost.ConsoleServer
             HttpConfiguration config = new HttpConfiguration();
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
+            config.Formatters.JsonFormatter.SerializerSettings =
+            new JsonSerializerSettings
+            {
+                ContractResolver = new CamelCasePropertyNamesContractResolver()
+            };
             app.UseCors(CorsOptions.AllowAll);
             app.Map("/signalr", map =>
             {
