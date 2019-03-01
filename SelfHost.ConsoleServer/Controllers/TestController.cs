@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SelfHost.ConsoleServer.Models;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace SelfHost.ConsoleServer.Controllers
@@ -21,13 +22,5 @@ namespace SelfHost.ConsoleServer.Controllers
         {
             return new Test() { id = 10, title = "there there", homeAddress = "home" };
         }
-    }
-
-
-    public class Test
-    {
-        public int id { get; set; }
-        public string title { get; set; }
-        public string homeAddress { get; set; }
     }
 }
