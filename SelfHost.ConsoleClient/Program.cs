@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
 using System;
-using System.Threading.Tasks;
 
 namespace SelfHost.ConsoleClient
 {
@@ -22,13 +21,12 @@ namespace SelfHost.ConsoleClient
             try
             {
                 connection.Start().Wait();
-                //proxy.On<string>("displayTime", time =>
-                // {
-                //     Console.WriteLine($"from server Time: {time}");
-                // });
-                //proxy.Invoke("ServerTime");
+                proxy.On<string>("displayTime", time =>
+                 {
+                     Console.WriteLine($"from server Time: {time}");
+                 });
+                proxy.Invoke("ServerTime");
 
-                //chatProxy.On<string>("addMessage", m => Console.WriteLine(m));
                 chatProxy.Invoke("Send", "Hello World", "mak", connection.ConnectionId).ContinueWith(task =>
                 {
                     if (task.IsFaulted)
@@ -40,7 +38,6 @@ namespace SelfHost.ConsoleClient
                     {
                         Console.WriteLine("call completed.");
                     }
-
                 });
             }
             catch (Exception ex)
