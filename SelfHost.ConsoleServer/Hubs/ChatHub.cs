@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hubs;
+﻿using Microsoft.AspNet.SignalR.Hubs;
 using System;
-using System.Threading.Tasks;
 
 namespace SelfHost.ConsoleServer.Hubs
 {
     [HubName("chatHub")]
-    public class ChatHub : Hub
+    public class ChatHub : NotificationHub
     {
         public void Send(string message, string userName, string connectionId)
         {
@@ -28,24 +26,6 @@ namespace SelfHost.ConsoleServer.Hubs
         public void JoinGroup(string groupName)
         {
             Groups.Add(Context.ConnectionId, groupName);
-        }
-
-        public override Task OnConnected()
-        {
-            Console.WriteLine("Hub OnConnected {0}\n", Context.ConnectionId);
-            return (base.OnConnected());
-        }
-
-        public override Task OnDisconnected(bool stopCalled)
-        {
-            Console.WriteLine("Hub OnDisconnected {0}\n", Context.ConnectionId);
-            return (base.OnDisconnected(stopCalled));
-        }
-
-        public override Task OnReconnected()
-        {
-            Console.WriteLine("Hub OnReconnected {0}\n", Context.ConnectionId);
-            return (base.OnReconnected());
         }
     }
 }

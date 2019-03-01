@@ -16,8 +16,7 @@ namespace SelfHost.ConsoleClient
         {
             string url = "http://localhost:9000";
             HubConnection connection = new HubConnection(url);
-            var proxy = connection.CreateHubProxy("notificationHub");
-            var chatProxy = connection.CreateHubProxy("chatHub");
+            var proxy = connection.CreateHubProxy("chatHub");
             try
             {
                 connection.Start().Wait();
@@ -27,7 +26,7 @@ namespace SelfHost.ConsoleClient
                  });
                 proxy.Invoke("ServerTime");
 
-                chatProxy.Invoke("Send", "Hello World", "mak", connection.ConnectionId).ContinueWith(task =>
+                proxy.Invoke("Send", "Hello World", "mak", connection.ConnectionId).ContinueWith(task =>
                 {
                     if (task.IsFaulted)
                     {
