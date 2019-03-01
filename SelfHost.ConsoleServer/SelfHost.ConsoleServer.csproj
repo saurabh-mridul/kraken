@@ -106,6 +106,7 @@
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
+    <Compile Include="Interfaces\ICacheListener.cs" />
     <Compile Include="Interfaces\IOfferingRepository.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Program.cs" />
@@ -115,22 +116,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="cache-config.xsd">
+    <None Include="Config\cache-config.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="coherence.xsd">
+    <None Include="Config\coherence.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="pof-config.xsd">
+    <None Include="Config\pof-config.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Config\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="coherence-pof-config.xml" />
+    <Content Include="Config\coherence-pof-config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
