@@ -1,4 +1,7 @@
-﻿namespace SelfHost.ConsoleServer.Common
+﻿using SelfHost.ConsoleServer.Attributes;
+using System.ComponentModel;
+
+namespace SelfHost.ConsoleServer.Common
 {
     public enum DestinationEnum
     {
@@ -10,9 +13,13 @@
 
     public enum CacheName
     {
+        [Description(CacheNames.OfferingsCache)]
         Offering,
+        [Description(CacheNames.HeartbeatCache)]
         Heartbeat,
+        [Description(CacheNames.EventsCache)]
         Events,
+        [Description(CacheNames.AutoResponderCache)]
         AutoResponder
     }
 

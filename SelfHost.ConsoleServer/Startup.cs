@@ -6,8 +6,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using SelfHost.ConsoleServer.Controllers;
-using SelfHost.ConsoleServer.Interfaces;
-using SelfHost.ConsoleServer.Repositories;
 using System.Net.Http.Formatting;
 using System.Reflection;
 using System.Web.Http;
@@ -33,8 +31,7 @@ namespace SelfHost.ConsoleServer
 
             // ...or you can register individual controlllers manually.
             builder.RegisterType<TestController>().InstancePerRequest();
-
-            //builder.Register(IOfferingRepository, c => new OfferingRepository());
+            //builder.RegisterType<OfferingRepository>().As<IOfferingRepository>().SingleInstance;
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
