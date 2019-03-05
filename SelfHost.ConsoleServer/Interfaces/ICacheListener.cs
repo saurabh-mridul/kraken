@@ -1,9 +1,10 @@
 ﻿using SelfHost.ConsoleServer.Coherence;
+using System;
 
 namespace SelfHost.ConsoleServer.Interfaces
 {
     public interface ICacheListener
     {
-        ConnectionDataEvent<string,string> CacheChanges { get; set; }
+        IObservable<ConnectionDataEvent<string,string>> CacheChanges { get; set; }
     }
 }

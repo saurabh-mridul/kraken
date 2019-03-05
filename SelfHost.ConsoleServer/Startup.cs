@@ -55,11 +55,12 @@ namespace SelfHost.ConsoleServer
             });
 
             // This adds ONLY the Autofac lifetime scope to the pipeline.
-            app.UseAutofacLifetimeScopeInjector(container);
+            //app.UseAutofacLifetimeScopeInjector(container);
 
             // Now you can add middleware from the container into the pipeline
             // wherever you like. For example, this adds custom DI-enabled middleware
             // AFTER the Web API middleware/handling.
+            app.UseAutofacWebApi(config);
             app.UseWebApi(config);
         }
     }

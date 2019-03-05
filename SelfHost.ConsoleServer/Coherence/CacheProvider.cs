@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using Tangosol.Net;
+using Tangosol.Util;
+using Tangosol.Util.Extractor;
 
 namespace SelfHost.ConsoleServer.Coherence
 {
@@ -14,9 +16,9 @@ namespace SelfHost.ConsoleServer.Coherence
 
         public static TValue GetEntry<TValue>(string cacheName, string key)
         {
-            //IValueExtractor extractor = new KeyExtractor
-            //IFilter filter = new KeyExtractor()
-            var entry = CacheFactory.GetCache(cacheName).GetValues(null);
+            IValueExtractor extractor = new KeyExtractor(IdentityExtractor.Instance);
+            IFilter filter = null;
+            var entry = CacheFactory.GetCache(cacheName).GetValues(filter);
             return entry != null
                 ? JsonConvert.DeserializeObject<TValue>(entry.ToString())
                 : default(TValue);

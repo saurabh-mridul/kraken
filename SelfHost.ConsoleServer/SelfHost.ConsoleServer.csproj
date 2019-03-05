@@ -100,9 +100,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\CacheIdentifierAttribute.cs" />
     <Compile Include="Coherence\CacheListener.cs" />
     <Compile Include="Coherence\CacheProvider.cs" />
     <Compile Include="Coherence\ConnectionDataEvent.cs" />
+    <Compile Include="Common\CacheNames.cs" />
+    <Compile Include="Common\Enums.cs" />
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Hubs\NotificationHub.cs" />
@@ -113,6 +116,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\OfferingRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utilities\EnumHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
